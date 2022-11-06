@@ -14,7 +14,10 @@ connectToMongoDb();
 const app = express();
 
 app.use(express.json());
-app.use('/', authRouter);
+app.get('/', (req, res) => {
+	res.send('Hello World!');
+});
+app.use('/auth', authRouter);
 
 //* Route to get blogs of current user
 app.get('/blogs/me', passport.authenticate('jwt', { session: false }), getMyBlogs);
