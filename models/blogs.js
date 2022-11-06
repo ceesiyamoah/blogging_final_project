@@ -11,7 +11,7 @@ const BlogSchema = new Schema(
 		description: {
 			type: String,
 		},
-		author: { type: Schema.Types.ObjectId, ref: 'users' },
+		author: { type: Schema.Types.ObjectId, ref: 'users', required: true },
 		state: {
 			type: String,
 			enum: ['draft', 'published'],

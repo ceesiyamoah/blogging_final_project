@@ -21,9 +21,10 @@ app.use('/auth', authRouter);
 
 //* Route to get blogs of current user
 app.get('/blogs/me', passport.authenticate('jwt', { session: false }), getMyBlogs);
+
 app.use('/blogs', blogRouter);
 
-app.use((err, req, res) => {
+app.use((err, req, res, next) => {
 	res.status(err.status || 500);
 	res.json({ message: err.message });
 });

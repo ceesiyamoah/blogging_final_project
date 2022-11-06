@@ -38,13 +38,9 @@ UserSchema.pre('save', async function (next) {
 });
 
 UserSchema.methods.isValidPassword = async function (password) {
-	try {
-		const user = this;
-		const compare = await bcrypt.compare(password, user.password);
-		return compare;
-	} catch (error) {
-		console.log(error);
-	}
+	const user = this;
+	const compare = await bcrypt.compare(password, user.password);
+	return compare;
 };
 
 UserSchema.set('toJSON', {
